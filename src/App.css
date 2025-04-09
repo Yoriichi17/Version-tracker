@@ -1,38 +1,80 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Press Start 2P', cursive;
+  background-color: #0a0a0a;
+  color: #0ff;
+  font-size: 12px;
+  image-rendering: pixelated;
+  position: relative;
+  overflow-x: hidden;
+  line-height: 1.6;
 }
 
-.App-logo {
-  height: 40vmin;
+.App {
+  padding: 30px 20px;
+  max-width: 1200px;
+  margin: auto;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #f0f;
+  text-shadow: 2px 2px #000, 0 0 6px #f0f;
+}
+
+/* CRT Flicker + Scanlines */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 255, 0.05) 2px,
+    rgba(0, 255, 255, 0.05) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+  animation: flicker 0.12s infinite;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 0.92; }
+  50% { opacity: 1; }
+}
+
+#matrix-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  background-color: #000;
+  image-rendering: pixelated;
+  opacity: 0.3;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.glow-text {
+  text-shadow: 0 0 2px #0ff, 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.neon-pink {
+  text-shadow: 0 0 2px #f0f, 0 0 5px #f0f, 0 0 10px #f0f, 0 0 20px #f0f;
 }
