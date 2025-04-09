@@ -81,7 +81,7 @@ function App() {
       {/* Matrix Canvas Background */}
       <canvas id="matrix-canvas"></canvas>
 
-      <h1 className="glow-text">📦 Version Tracker</h1>
+      <h1 className="glow-text">💻 Version Tracker</h1>
 
       <AddToolForm onAdd={fetchTools} />
       <FilterBar setFilter={setFilter} />
